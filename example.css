@@ -1,0 +1,44 @@
+body {
+  padding: 20px 0px 20px;
+  font-family: 'Helvetica','Arial', sans-serif;
+  font-size: 12px;
+  text-align: center;
+}
+
+.container {
+  width: 940px;
+  margin: 0px auto;
+  text-align: left;
+}
+
+table {
+  margin-top: 10px;
+  width: 100%;
+  font-size: 1em;
+}
+
+
+td, th {
+  padding: 15px;
+}
+
+td {
+  text-align: right;
+}
+
+
+h1 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+}
+
+h2 {
+  margin: 20px 0;
+  font-size: 1.8em;
+}
+
+a, a:visited {
+  color: #0069D6;
+}

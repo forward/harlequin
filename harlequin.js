@@ -1,3 +1,11 @@
+/**
+ *    Harlequin.js
+ *    Highlighting for data tables
+ *
+ *    @author       Luke Williams (http://www.red-root.com)
+ *    @version      0.1
+*/
+
 Harlequin = (function(){
     
    var table = null,
@@ -15,6 +23,13 @@ Harlequin = (function(){
         lightness: 70,
         colors: null,
       }
+      
+    // fix for webkit bug on nth-child and descendents
+    // until we don't need jQuery anymore or a find a better fix
+    $.expr[":"].harlequin = function() {
+        return true;
+    };
+
     
     // lets find some cells
     
@@ -59,10 +74,11 @@ Harlequin = (function(){
               cells = [];
               
           var query = (direction == "column") ? "tbody tr td:nth-child("+(seg_index+1)+")" : 
-                      (direction == "row") ? "tbody tr:nth-child("+(seg_index+1)+") td" :
+                      (direction == "row") ? "tbody tr:nth-child("+(seg_index+1)+") td:harlequin" :
                       (direction == "both") ? "tbody td" : false;
           
           if(query == false) return;
+        
           
           $(query,table).each(function(){
             
@@ -92,10 +108,6 @@ Harlequin = (function(){
             cells.push(new_cell);
           });
           
-          if(table.attr("id") == "rows"){
-            //console.log(query);
-            //console.log($(query,table));
-          }
           
           for(j = 0, jlen = cells.length; j < jlen; j++){
                cells[j].el.css("background-color",getColor(cells[j].value,seg_min,seg_max,seg.sort));
@@ -133,7 +145,6 @@ Harlequin = (function(){
         
         
         }
-        // console.log(color);
         return color;
     }  
     
