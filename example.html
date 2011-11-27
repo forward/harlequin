@@ -1,0 +1,403 @@
+<!doctype html5>
+<html>
+  <head>
+    <title>Harlequin.JS</title>
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" src="example.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="harlequin.js"></script>
+    <script src="example.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Harlequin.js</h1>
+        <div id="info">
+          Harlequin.js is a jQuery utility for apply colour highlighting to data tables, useful for showing
+          the distribution of data. Simply include the library in your page and you're off.
+          harlequin("id","type",options { class, hue, sat, light})
+        </div>
+      </header>
+      <article>
+        <h2>Simple columns Example</h2>
+        <table id="columns">
+          <thead>
+            <tr>
+              <th>Hour</th>
+              <th class="color">Day 1</th>
+              <th class="color">Day 2</th>
+              <th class="color">Day 3</th>
+              <th class="color">Day 4</th>
+              <th class="color">Day 5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>0</th>
+              <td>1.01</td>
+              <td>2.01</td>
+              <td>3.41</td>
+              <td>4.01</td>
+              <td>5.01</td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td>3.012</td>
+              <td>2.11</td>
+              <td>3.11</td>
+              <td>5.01</td>
+              <td>0.23</td>
+            </tr>
+            <tr>
+              <th>8</th>
+              <td>1.41</td>
+              <td>3.01</td>
+              <td>1.01</td>
+              <td>8.9</td>
+              <td>2.38</td>
+            </tr>
+            <tr>
+              <th>12</th>
+              <td>0.90</td>
+              <td>4.01</td>
+              <td>2.11</td>
+              <td>3.41</td>
+              <td>2.88</td>
+            </tr>
+            <tr>
+              <th>16</th>
+              <td>4.41</td>
+              <td>5.01</td>
+              <td>7.41</td>
+              <td>6.01</td>
+              <td>8.01</td>
+            </tr>
+            <tr>
+              <th>20</th>
+              <td>0.41</td>
+              <td>2.01</td>
+              <td>3.01</td>
+              <td>1.41</td>
+              <td>1.01</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Simple Rows Example</h2>
+        <table id="rows">
+          <thead>
+            <tr>
+              <th>Hour</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+              <th>Day 5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="color">
+              <th>0</th>
+              <td>1.01</td>
+              <td>2.01</td>
+              <td>3.41</td>
+              <td>4.01</td>
+              <td>5.01</td>
+            </tr>
+            <tr class="color">
+              <th>4</th>
+              <td>3.012</td>
+              <td>2.11</td>
+              <td>3.11</td>
+              <td>5.01</td>
+              <td>0.23</td>
+            </tr>
+            <tr class="color">
+              <th>8</th>
+              <td>1.41</td>
+              <td>3.01</td>
+              <td>1.01</td>
+              <td>8.9</td>
+              <td>2.38</td>
+            </tr>
+            <tr class="color">
+              <th>12</th>
+              <td>0.90</td>
+              <td>4.01</td>
+              <td>2.11</td>
+              <td>3.41</td>
+              <td>2.88</td>
+            </tr>
+            <tr class="color">
+              <th>16</th>
+              <td>4.41</td>
+              <td>5.01</td>
+              <td>7.41</td>
+              <td>6.01</td>
+              <td>8.01</td>
+            </tr>
+            <tr class="color">
+              <th>20</th>
+              <td>0.41</td>
+              <td>2.01</td>
+              <td>3.01</td>
+              <td>1.41</td>
+              <td>1.01</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Rows and Columns</h2>
+        <table id="both">
+          <thead>
+            <tr>
+              <th>Hour</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+              <th>Day 5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>0</th>
+              <td>1.01</td>
+              <td>2.01</td>
+              <td>3.41</td>
+              <td>4.01</td>
+              <td>5.01</td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td>3.012</td>
+              <td>2.11</td>
+              <td>3.11</td>
+              <td>5.01</td>
+              <td>0.23</td>
+            </tr>
+            <tr>
+              <th>8</th>
+              <td>1.41</td>
+              <td>3.01</td>
+              <td>1.01</td>
+              <td>8.9</td>
+              <td>2.38</td>
+            </tr>
+            <tr>
+              <th>12</th>
+              <td>0.90</td>
+              <td>4.01</td>
+              <td>2.11</td>
+              <td>3.41</td>
+              <td>2.88</td>
+            </tr>
+            <tr>
+              <th>16</th>
+              <td>4.41</td>
+              <td>5.01</td>
+              <td>7.41</td>
+              <td>6.01</td>
+              <td>8.01</td>
+            </tr>
+            <tr>
+              <th>20</th>
+              <td>0.41</td>
+              <td>2.01</td>
+              <td>3.01</td>
+              <td>1.41</td>
+              <td>1.01</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Custom Configuration</h2>
+        <table id="custom">
+          <thead>
+            <tr>
+              <th>Hour</th>
+              <th class="harlequin" data-sort="high-to-low">Day 1</th>
+              <th class="harlequin" data-sort="high-to-low">Day 2</th>
+              <th class="color">Day 3</th>
+              <th class="harlequin">Day 4</th>
+              <th class="color">Day 5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>0</th>
+              <td>1.01</td>
+              <td>2.01</td>
+              <td>3.41</td>
+              <td>4.01</td>
+              <td>5.01</td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td>3.012</td>
+              <td>2.11</td>
+              <td>3.11</td>
+              <td>5.01</td>
+              <td>0.23</td>
+            </tr>
+            <tr>
+              <th>8</th>
+              <td>1.41</td>
+              <td>3.01</td>
+              <td>1.01</td>
+              <td>8.9</td>
+              <td>2.38</td>
+            </tr>
+            <tr>
+              <th>12</th>
+              <td>0.90</td>
+              <td>4.01</td>
+              <td>2.11</td>
+              <td>3.41</td>
+              <td>2.88</td>
+            </tr>
+            <tr>
+              <th>16</th>
+              <td>4.41</td>
+              <td>5.01</td>
+              <td>7.41</td>
+              <td>6.01</td>
+              <td>8.01</td>
+            </tr>
+            <tr>
+              <th>20</th>
+              <td>0.41</td>
+              <td>2.01</td>
+              <td>3.01</td>
+              <td>1.41</td>
+              <td>1.01</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Custom Colours</h2>
+        <table id="colors">
+          <thead>
+            <tr>
+              <th>Hour</th>
+              <th class="color">Day 1</th>
+              <th class="color">Day 2</th>
+              <th class="color">Day 3</th>
+              <th class="color">Day 4</th>
+              <th class="color">Day 5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>0</th>
+              <td>1.01</td>
+              <td>2.01</td>
+              <td>3.41</td>
+              <td>4.01</td>
+              <td>5.01</td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td>3.012</td>
+              <td>2.11</td>
+              <td>3.11</td>
+              <td>5.01</td>
+              <td>0.23</td>
+            </tr>
+            <tr>
+              <th>8</th>
+              <td>1.41</td>
+              <td>3.01</td>
+              <td>1.01</td>
+              <td>8.9</td>
+              <td>2.38</td>
+            </tr>
+            <tr>
+              <th>12</th>
+              <td>0.90</td>
+              <td>4.01</td>
+              <td>2.11</td>
+              <td>3.41</td>
+              <td>2.88</td>
+            </tr>
+            <tr>
+              <th>16</th>
+              <td>4.41</td>
+              <td>5.01</td>
+              <td>7.41</td>
+              <td>6.01</td>
+              <td>8.01</td>
+            </tr>
+            <tr>
+              <th>20</th>
+              <td>0.41</td>
+              <td>2.01</td>
+              <td>3.01</td>
+              <td>1.41</td>
+              <td>1.01</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Less Strict Markup</h2>
+        <table id="markup">
+            <tr>
+              <th>Hour</th>
+              <th class="color">Day 1</th>
+              <th class="color">Day 2</th>
+              <th class="color">Day 3</th>
+              <th class="color">Day 4</th>
+              <th class="color">Day 5</th>
+            </tr>
+            <tr>
+              <th>0</th>
+              <td>1.01</td>
+              <td>2.01</td>
+              <td>3.41</td>
+              <td>4.01</td>
+              <td>5.01</td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td>3.012</td>
+              <td>2.11</td>
+              <td>3.11</td>
+              <td>5.01</td>
+              <td>0.23</td>
+            </tr>
+            <tr>
+              <th>8</th>
+              <td>1.41</td>
+              <td>3.01</td>
+              <td>1.01</td>
+              <td>8.9</td>
+              <td>2.38</td>
+            </tr>
+            <tr>
+              <th>12</th>
+              <td>0.90</td>
+              <td>4.01</td>
+              <td>2.11</td>
+              <td>3.41</td>
+              <td>2.88</td>
+            </tr>
+            <tr>
+              <th>16</th>
+              <td>4.41</td>
+              <td>5.01</td>
+              <td>7.41</td>
+              <td>6.01</td>
+              <td>8.01</td>
+            </tr>
+            <tr>
+              <th>20</th>
+              <td>0.41</td>
+              <td>2.01</td>
+              <td>3.01</td>
+              <td>1.41</td>
+              <td>1.01</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+      <footer>
+        
+      </footer>
+  </body>
+</html>
