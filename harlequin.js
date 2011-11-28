@@ -145,6 +145,8 @@ Harlequin = (function(){
         
         
         }
+        
+        
         return color;
     }  
     
@@ -155,6 +157,8 @@ Harlequin = (function(){
     }
     
     useHsl = testHsl();
+    alert(useHsl);
+
     
     hsl2hex = function(h,s,l){
         h = (h % 360) / 360;
