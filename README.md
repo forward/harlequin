@@ -97,7 +97,7 @@ Keep in mind by setting an arrow of colours you will be ignoring all the HSL con
 
 ## To-Do
 
-* Convert to HEX is hsl/rgb is not supported
+* Convert to Hex if hsl/rgb is not supported
 * Test with col-span element
 * Decouple jQuery
 * Build a less strict mode, without the need for thead and tbody (more prone to weird results mayhaps :/)
