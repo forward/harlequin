@@ -2,7 +2,7 @@
 
 Harlequin is a utility for applying color highlighting to HTML data tables, useful for showing the distribution of data. You can do this by column, by row, or across the whole table. Examples are available on the index.html page.
 
-Version: 0.1
+Version: 0.2
 
 Tested in FF, Chrome and Safari (latest) so far
 
@@ -97,14 +97,13 @@ Keep in mind by setting an arrow of colours you will be ignoring all the HSL con
 
 ## To-Do
 
-* Convert to Hex if hsl/rgb is not supported
 * Test with col-span element
 * Decouple jQuery
 * Build a less strict mode, without the need for thead and tbody (more prone to weird results mayhaps :/)
 
 ## Changelog
 
-... none yet
+* __0.2__: Added fallback to set hex value is HSL is not supported
 
 ## License
 

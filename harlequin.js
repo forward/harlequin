@@ -3,14 +3,14 @@
  *    Highlighting for data tables
  *
  *    @author       Luke Williams (http://www.red-root.com)
- *    @version      0.1
+ *    @version      0.2
 */
 
 Harlequin = (function(){
     
    var table = null,
        segments = [],
-       useHsl = null;
+       useHsl = true;
   
    // config options
        
@@ -140,7 +140,7 @@ Harlequin = (function(){
           color = "hsl("+hue+","+config.sat+"%,"+config.lightness+"%)";
         
           if(!useHsl){
-            // convert to RGB
+            color = hsl2hex(hue,config.sat,config.lightness);
           }
         
         
@@ -151,7 +151,33 @@ Harlequin = (function(){
     testHsl = function(){
       var el = document.createElement("harlequin");
       el.style.cssText = "background-color:hsla(120,40%,100%,.5)";
-      useHsl = !!~('' + el.style.backgroundColor).indexOf("rgba") || !!~('' + el.style.backgroundColor).indexOf("hsla");
+      return !!~('' + el.style.backgroundColor).indexOf("rgba") || !!~('' + el.style.backgroundColor).indexOf("hsla");
+    }
+    
+    useHsl = testHsl();
+    
+    hsl2hex = function(h,s,l){
+        h = (h % 360) / 360;
+        s = s/100;
+        l = l/100;
+
+        if(s == 0){
+             l = Math.round(l * 255)
+             return { r: l, g: l, b: l  };  
+        }
+
+        var m2 = l >= 0.5 ? ((l+s)-(l*s)) : l*(1+s);
+        var m1 = (2 * l) - m2;
+
+        return '#'+ ( Math.round(hue(h - 1/3) * 255) | Math.round(hue(h) * 255) << 8 | Math.round(hue(h + 1/3) * 255) << 16 ).toString(16)
+
+        function hue(h) {
+                h = h < 0 ? h + 1 : (h > 1 ? h - 1 : h);
+                if      (h * 6 < 1) return m1 + (m2 - m1) * h * 6;
+                else if (h * 2 < 1) return m2;
+                else if (h * 3 < 2) return m1 + (m2 - m1) * (2/3 - h) * 6;
+                else                return m1;
+        }
     }
     
     
@@ -161,7 +187,6 @@ Harlequin = (function(){
         table = $("#"+table_id);
         segments = [];
         config = {}
-        testHsl();
         
         if(options != undefined){
           for(k in defaults){
