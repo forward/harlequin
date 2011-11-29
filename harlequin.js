@@ -136,6 +136,8 @@ Harlequin = (function(){
           }else{
               var hue = Math.ceil(config.start_hue + (((value - min)/(max-min)) * range));
           }
+          
+          if(min == max) hue = Math.ceil(range/2);
         
           color = "hsl("+hue+","+config.sat+"%,"+config.lightness+"%)";
         
