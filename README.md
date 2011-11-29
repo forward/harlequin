@@ -1,4 +1,6 @@
-# Harlequin.js (beta) (demo here)[http://redroot.github.com/harlequin/]
+# Harlequin.js (beta) 
+
+(demo here)[http://redroot.github.com/harlequin/]
 
 Harlequin is a utility for applying color highlighting to HTML data tables, useful for showing the distribution of data. You can do this by column, by row, or across the whole table. Examples are available on the index.html page.
 
