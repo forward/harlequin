@@ -11,7 +11,8 @@ Harlequin = (function(){
     
    var table = null,
        segments = [],
-       useHsl = true;
+       useHsl = true,
+       paint = "stripe";
   
    // config options
        
@@ -43,29 +44,45 @@ Harlequin = (function(){
         });
       }else{
         
-        var i = 0;
+        var i = 0,
+            col_count = 0;
         
         var query = (direction == "column") ? "thead th" :
                     (direction == "row") ? "tbody tr" : false;
                    
         if(query == false) return;
         
-          $(query,table).each(function(){
+        $(query,table).each(function(){
+          if($(this).attr("colspan") != undefined){
+            var len = parseInt($(this).attr("colspan"));
             if($(this).hasClass(config.color_class)){
-                  segments.push({
-                      index: i,
+              for(var j = 0; j < len; j++){
+                segments.push({
+                      index: i+j,
                       sort: $(this).data("sort") || "low-to-high"
-                  });
+                });
+              }
+            }else{
+              i += len;
             }
-             i++;
-             
-          });
+          }else{
+            if($(this).hasClass(config.color_class)){
+              segments.push({
+                    index: i,
+                    sort: $(this).data("sort") || "low-to-high"
+              });
+            }
+          }
+    
+          i++;
+           
+        });
       }
     }
     
     // lets stripe some cells
     
-    stripeCells = function(direction){
+    paintCells = function(direction){
       for(i = 0, len = segments.length; i < len; i++){
           
           var seg = segments[i],
@@ -85,6 +102,7 @@ Harlequin = (function(){
             
             var element = $(this);
             var new_cell = {
+                orig: element.text(),
                 value: parseFloat(element.text().replace(",","")),
                 el: element    
             }
@@ -111,10 +129,40 @@ Harlequin = (function(){
           
           
           for(j = 0, jlen = cells.length; j < jlen; j++){
-               cells[j].el.css("background-color",getColor(cells[j].value,seg_min,seg_max,seg.sort));
+              colorCell(cells[j],seg_min,seg_max,seg.sort);
           }
       }
     }
+    
+    colorCell = function(cell,min,max,sort){
+      if(paint == "stripe"){
+        cell.el.css("background-color",getColor(cell.value,min,max,sort));
+      }else if(paint == "bar"){
+        var span = document.createElement("span");
+        span.innerHTML = cell.orig;
+        span.style.background = getColor(cell.value,min,max,sort);
+        span.style.width = Math.floor(((cell.value-min)/(max-min)) * 100) + "%"
+        span.style.display = "inline-block";
+        cell.el[0].innerHTML = ""
+        cell.el[0].appendChild(span);
+      }else if(paint == "dot"){
+        var span = document.createElement("span"),
+            max_radius = Math.floor(cell.el.height() * 1.5),
+            radius = Math.floor(((cell.value-min)/(max-min)) * max_radius);
+            
+            
+        span.innerHTML = cell.orig;
+        span.style.background = getColor(cell.value,min,max,sort);
+        span.style.display = "inline-block";
+        
+        span.style.width = span.style.height = (radius) + "px";
+        span.style["border-radius"] = radius + "px";
+
+        cell.el[0].innerHTML = ""
+        cell.el[0].appendChild(span);
+      }
+    }
+    
     
     // color functions
         
@@ -189,10 +237,11 @@ Harlequin = (function(){
     
     // init function   
     
-    start = function(table_id,direction,options){
+    start = function(table_id,direction,options,npaint){
         table = $("#"+table_id);
         segments = [];
         config = {}
+        paint = npaint || "stripe"
         
         if(options != undefined){
           for(k in defaults){
@@ -203,13 +252,21 @@ Harlequin = (function(){
         }
         
         populateCells(direction);
-        stripeCells(direction);
+        paintCells(direction);
     }
     
     return {
-        stripe: function(table_id,direction,options){
-            start(table_id,direction,options);
-        }  
+        stripe: function(table_id,direction,options,paint){
+            start(table_id,direction,options,"stripe");
+        },
+        
+        bar: function(table_id,direction,options,paint){
+            start(table_id,direction,options,"bar");
+        },
+        
+        dot: function(table_id,direction,options,paint){
+            start(table_id,direction,options,"dot");
+        }
     }
     
 })();

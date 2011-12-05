@@ -6,6 +6,8 @@ $(document).ready(function(){
     
     Harlequin.stripe("both","both");
     
+    Harlequin.stripe("reverse","both");
+    
     Harlequin.stripe("custom","column",{
       color_class: "harlequin",
       start_hue: 120,
@@ -34,6 +36,10 @@ $(document).ready(function(){
         "#63be7b"
       ]
     });
+    
+    Harlequin.stripe("colspan","column");
+    
+    Harlequin.bar("bar","both");
     
 
     
