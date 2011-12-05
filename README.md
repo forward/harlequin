@@ -109,7 +109,7 @@ Keep in mind by setting an arrow of colours you will be ignoring all the HSL con
 
 ## License
 
-Copyright (c) 2011- Luke Williams
+Copyright (c) 2011- Forward
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
