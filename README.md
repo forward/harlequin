@@ -2,7 +2,7 @@
 
 [-> Demo here](http://forward.github.com/harlequin/)
 
-Harlequin is a utility for applying color highlighting to HTML data tables, useful for showing the distribution of data. You can do this by column, by row, or across the whole table. Examples are available on the index.html page.
+Harlequin is a utility for applying color highlighting to HTML data tables, useful for showing the distribution of data. You can do this by column, by row, or across the whole table. Examples are available on the index.html page. You can also specify your own custom painting methods.
 
 Version: 0.4
 
@@ -62,7 +62,7 @@ Harlequin will colour between two hues, which are set to red (0 as the start hue
 
 ### Options
 
-An options object can can be passed as a third parameter to the `Harlequin.stripe` function call, allowing you to configure the display further.
+An options object can can be passed as a third parameter to the a paint function call, allowing you to configure the display further.
 
         Harlequin.stripe("mytable","column"{
           color_class: "color" // the class Harlequin will look for when colouring, default 'color'
@@ -124,7 +124,7 @@ The parameters for an custom painter function are:
 
 To paint with a custom painter, you can use ``Harlequin.paint``, passing the name of you painter as the first parameter, followed the by the other parameters you would pass to ``.stripe`` or ``.bar``:
 
-    Harlequin.paint("mypainter","atableid","row");
+    Harlequin.paint("mypainter","atableid","row",options_object);
     
 In essence, the ``.stripe`` method is just a call to the above method with the "stripe" painter name as the first parameter.
 
