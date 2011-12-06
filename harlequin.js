@@ -4,7 +4,7 @@
  *
  *    @author       Forward (http://forwardtechnology.co.uk)
  *    @contributors Luke Williams (http://www.red-root.com)
- *    @version      0.2
+ *    @version      0.4
 */
 
 Harlequin = (function(){

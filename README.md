@@ -1,12 +1,12 @@
 # Harlequin.js (beta) 
 
-[demo here](http://redroot.github.com/harlequin/)
+[-> Demo here](http://forward.github.com/harlequin/)
 
 Harlequin is a utility for applying color highlighting to HTML data tables, useful for showing the distribution of data. You can do this by column, by row, or across the whole table. Examples are available on the index.html page.
 
 Version: 0.3
 
-Tested in FF, Chrome and Safari (latest) so far
+Tested in FF, Chrome and Safari and IE7+
 
 ## Prerequisites
 
@@ -97,6 +97,41 @@ Most of these are straightforward, but here is an example of specifying an array
         
 Keep in mind by setting an arrow of colours you will be ignoring all the HSL configuration and the sort-order will not apply. To reverse the colours, simply reverse the elements in the array.
 
+## Painting Modes
+
+Harlequin comes with two painting modes, ``Harlequin.stripe`` and ``Harlequin.bar``, but also let you define custom ways of painting the cell. To use this you must register each one using ``Harlequin.register(name,function)``:
+
+    Harlequin.register("mypainter",function(cell,min,max,sort,color,options){
+      var size = Math.floor(((cell.value-min)/(max-min)) * 14) + 12;
+      var grey = 200 - Math.floor(((cell.value-min)/(max-min)) * 200);
+      cell.el.css("font-size",size+"px")
+             .css("color","rgb("+grey+","+grey+","+grey+")")
+             .css("border-bottom","1px solid "+color);
+  
+    });
+
+The parameters for an custom painter function are:
+
+* __cell__ : an object with 
+  * __el__ : this table cell, as a jQuery object,
+  * __orig__ : original text value of the cell,
+  * __value__: parsed value of the cell,
+* __min__ : smallest value in the range,
+* __max__ : largets value in the range,
+* __sort__ : sort order ("high-to-low" or "low-to-high"),
+* __color__ : the color calculated by the internal function,
+* __options__ : the options object as specified by the user earlier if at all
+
+To paint with a custom painter, you can use ``Harlequin.paint``, passing the name of you painter as the first parameter, followed the by the other parameters you would pass to ``.stripe`` or ``.bar``:
+
+    Harlequin.paint("mypainter","atableid","row");
+    
+In essence, the ``.stripe`` method is just a call to the above method with the "stripe" painter name as the first parameter.
+
+You can also apply multiple painters to each cell, by passing an array of painter names to the ``.paint`` method:
+
+    Harlequin.paint(["stripe","mypainter"],"atableid","row");
+
 ## To-Do
 
 * Decouple jQuery
@@ -104,7 +139,7 @@ Keep in mind by setting an arrow of colours you will be ignoring all the HSL con
 
 ## Changelog
 
-
+* __0.4__: Added ability to add custom painters
 * __0.3__: Colspans now work with columns mode
 * __0.2__: Added fallback to set hex value is HSL is not supported
 
