@@ -4,7 +4,7 @@
 
 Harlequin is a utility for applying color highlighting to HTML data tables, useful for showing the distribution of data. You can do this by column, by row, or across the whole table. Examples are available on the index.html page.
 
-Version: 0.3
+Version: 0.4
 
 Tested in FF, Chrome and Safari and IE7+
 
