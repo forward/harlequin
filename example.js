@@ -41,6 +41,6 @@ $(document).ready(function(){
     
     Harlequin.bar("bar","both");
     
-
+    Harlequin.dot("dot","both");
     
 });

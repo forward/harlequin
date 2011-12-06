@@ -12,7 +12,8 @@ Harlequin = (function(){
    var table = null,
        segments = [],
        useHsl = true,
-       paint = "stripe";
+       paint = "stripe",
+       painters = {};
   
    // config options
        
@@ -136,30 +137,64 @@ Harlequin = (function(){
     
     colorCell = function(cell,min,max,sort){
       if(paint == "stripe"){
-        cell.el.css("background-color",getColor(cell.value,min,max,sort));
-      }else if(paint == "bar"){
-        var span = document.createElement("span");
-        span.innerHTML = cell.orig;
-        span.style.background = getColor(cell.value,min,max,sort);
-        span.style.width = Math.floor(((cell.value-min)/(max-min)) * 100) + "%"
-        span.style.display = "inline-block";
-        cell.el[0].innerHTML = ""
-        cell.el[0].appendChild(span);
-      }else if(paint == "dot"){
-        var span = document.createElement("span"),
-            max_radius = Math.floor(cell.el.height() * 1.5),
-            radius = Math.floor(((cell.value-min)/(max-min)) * max_radius);
-            
-            
-        span.innerHTML = cell.orig;
-        span.style.background = getColor(cell.value,min,max,sort);
-        span.style.display = "inline-block";
         
-        span.style.width = span.style.height = (radius) + "px";
-        span.style["border-radius"] = radius + "px";
+        cell.el.css("background-color",getColor(cell.value,min,max,sort));
+      
+      }else if(paint == "bar"){
+        
+        var bar = document.createElement("span"),
+            content = document.createElement("span");
+        
+        bar.innerHTML = cell.orig;
+        bar.style.background = getColor(cell.value,min,max,sort);
+        bar.style.width = Math.floor(((cell.value-min)/(max-min)) * 100) + "%"
+        bar.style.display = "block";
+        bar.style.top = bar.style.bottom = bar.style.left =  0;
+        bar.style.position = "absolute";
+        bar.style.zIndex = 0;
+        bar.style.display = "inline-block";
+        bar.style.textAlign = "center";
+        
 
+        content.style.zIndex = 1;
+        content.style.display = "inline-block";
+        content.style.lineHeight = cell.el.height();
+        
+        
+        cell.el[0].style.position = "relative";
         cell.el[0].innerHTML = ""
-        cell.el[0].appendChild(span);
+        cell.el[0].appendChild(bar);
+        cell.el[0].appendChild(content);
+        
+      }else if(paint == "dot"){
+        
+        var dot = document.createElement("span"),
+            content = document.createElement("span");
+        
+        max_radius = Math.floor(cell.el.height() * 4),
+        radius = Math.floor(((cell.value-min)/(max-min)) * max_radius) + 3;
+        
+            
+        dot.innerHTML = cell.orig;
+        dot.style.background = getColor(cell.value,min,max,sort);
+        dot.style.display = "inline-block";
+        dot.style.textAlign = "center";
+        dot.style.width = dot.style.height = (radius) + "px";
+        dot.style.borderRadius = dot.style.MozBorderRadius = dot.style.WebkitBorderRadius = "999px";
+        dot.style.position = "absolute";
+        dot.style.zIndex = 0;
+        
+        // calcute absolute positioning based on size of height and radius
+        
+        content.style.zIndex = 1;
+        content.style.display = "inline-block";
+        content.style.lineHeight = cell.el.height();
+        
+
+        cell.el[0].style.position = "relative";
+        cell.el[0].innerHTML = ""
+        cell.el[0].appendChild(dot);
+        cell.el[0].appendChild(content);
       }
     }
     
