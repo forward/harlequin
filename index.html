@@ -8,552 +8,794 @@
     <script src="https://raw.github.com/forward/harlequin/master/example.js"></script>
   </head>
   <body>
-    <div class="container">
-      <header>
-         <p class="right">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="forwardtek">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-            |
-            A <a href="http://forwardtechnology.co.uk" title="">Forward Technology</a> Project
-          </p>
-        <h1>Harlequin.js</h1>
-        <div id="info">
-          <p>
-            Harlequin.js is a javascript utility for applying colour highlighting to data tables, useful for showing
-            the distribution of data. Simply include the library in your page and you're off.
-          </p>
-          <p><a href="http://github.com/redroot/harlequin"><strong>View the README</strong></a> or the <a href="https://raw.github.com/forward/harlequin/master/example.js">example usage</a> to find out how to start colouring!</p>
-         
-        </div>
-      </header>
-      <article>
-            <h2>Simple columns Example<small>Colouring the data by column</small></h2>
-            <table id="columns">
-              <thead>
-                <tr>
-                  <th>Hour</th>
-                  <th class="color">Day 1</th>
-                  <th class="color">Day 2</th>
-                  <th class="color">Day 3</th>
-                  <th class="color">Day 4</th>
-                  <th class="color">Day 5</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>0</th>
-                  <td>1.01</td>
-                  <td>2.01</td>
-                  <td>3.41</td>
-                  <td>4.01</td>
-                  <td>5.01</td>
-                </tr>
-                <tr>
-                  <th>4</th>
-                  <td>3.012</td>
-                  <td>2.11</td>
-                  <td>3.11</td>
-                  <td>5.01</td>
-                  <td>0.23</td>
-                </tr>
-                <tr>
-                  <th>8</th>
-                  <td>1.41</td>
-                  <td>3.01</td>
-                  <td>1.01</td>
-                  <td>8.9</td>
-                  <td>2.38</td>
-                </tr>
-                <tr>
-                  <th>12</th>
-                  <td>0.90</td>
-                  <td>4.01</td>
-                  <td>2.11</td>
-                  <td>3.41</td>
-                  <td>2.88</td>
-                </tr>
-                <tr>
-                  <th>16</th>
-                  <td>4.41</td>
-                  <td>5.01</td>
-                  <td>7.41</td>
-                  <td>6.01</td>
-                  <td>8.01</td>
-                </tr>
-                <tr>
-                  <th>20</th>
-                  <td>0.41</td>
-                  <td>2.01</td>
-                  <td>3.01</td>
-                  <td>1.41</td>
-                  <td>1.01</td>
-                </tr>
-              </tbody>
-            </table>
-        <h2>Simple Rows Example<small>Colouring the data by row</small></h2>
-        <table id="rows">
-          <thead>
-            <tr>
-              <th>Hour</th>
-              <th>Day 1</th>
-              <th>Day 2</th>
-              <th>Day 3</th>
-              <th>Day 4</th>
-              <th>Day 5</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="color">
-              <th>0</th>
-              <td>1.01</td>
-              <td>2.01</td>
-              <td>3.41</td>
-              <td>4.01</td>
-              <td>5.01</td>
-            </tr>
-            <tr class="color">
-              <th>4</th>
-              <td>3.012</td>
-              <td>2.11</td>
-              <td>3.11</td>
-              <td>5.01</td>
-              <td>0.23</td>
-            </tr>
-            <tr class="color">
-              <th>8</th>
-              <td>1.41</td>
-              <td>3.01</td>
-              <td>1.01</td>
-              <td>8.9</td>
-              <td>2.38</td>
-            </tr>
-            <tr class="color">
-              <th>12</th>
-              <td>0.90</td>
-              <td>4.01</td>
-              <td>2.11</td>
-              <td>3.41</td>
-              <td>2.88</td>
-            </tr>
-            <tr class="color">
-              <th>16</th>
-              <td>4.41</td>
-              <td>5.01</td>
-              <td>7.41</td>
-              <td>6.01</td>
-              <td>8.01</td>
-            </tr>
-            <tr class="color">
-              <th>20</th>
-              <td>0.41</td>
-              <td>2.01</td>
-              <td>3.01</td>
-              <td>1.41</td>
-              <td>1.01</td>
-            </tr>
-          </tbody>
-        </table>
-        <h2>Rows and Columns <small>Colouring by all cells within the table body</small></h2>
-        <table id="both">
-          <thead>
-            <tr>
-              <th>Hour</th>
-              <th>Day 1</th>
-              <th>Day 2</th>
-              <th>Day 3</th>
-              <th>Day 4</th>
-              <th>Day 5</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>0</th>
-              <td>1.01</td>
-              <td>2.01</td>
-              <td>3.41</td>
-              <td>4.01</td>
-              <td>5.01</td>
-            </tr>
-            <tr>
-              <th>4</th>
-              <td>3.012</td>
-              <td>2.11</td>
-              <td>3.11</td>
-              <td>5.01</td>
-              <td>0.23</td>
-            </tr>
-            <tr>
-              <th>8</th>
-              <td>1.41</td>
-              <td>3.01</td>
-              <td>1.01</td>
-              <td>8.9</td>
-              <td>2.38</td>
-            </tr>
-            <tr>
-              <th>12</th>
-              <td>0.90</td>
-              <td>4.01</td>
-              <td>2.11</td>
-              <td>3.41</td>
-              <td>2.88</td>
-            </tr>
-            <tr>
-              <th>16</th>
-              <td>4.41</td>
-              <td>5.01</td>
-              <td>7.41</td>
-              <td>6.01</td>
-              <td>8.01</td>
-            </tr>
-            <tr>
-              <th>20</th>
-              <td>0.41</td>
-              <td>2.01</td>
-              <td>3.01</td>
-              <td>1.41</td>
-              <td>1.01</td>
-            </tr>
-          </tbody>
-        </table>
-        <h2>Reverse Colouring <small>Setting <code>data-sort</code> to 'high-to-low' red-to-green</small></h2>
-        <table id="reverse" data-sort="high-to-low">
-          <thead>
-            <tr>
-              <th>Hour</th>
-              <th>Day 1</th>
-              <th>Day 2</th>
-              <th>Day 3</th>
-              <th>Day 4</th>
-              <th>Day 5</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>0</th>
-              <td>1.01</td>
-              <td>2.01</td>
-              <td>3.41</td>
-              <td>4.01</td>
-              <td>5.01</td>
-            </tr>
-            <tr>
-              <th>4</th>
-              <td>3.012</td>
-              <td>2.11</td>
-              <td>3.11</td>
-              <td>5.01</td>
-              <td>0.23</td>
-            </tr>
-            <tr>
-              <th>8</th>
-              <td>1.41</td>
-              <td>3.01</td>
-              <td>1.01</td>
-              <td>8.9</td>
-              <td>2.38</td>
-            </tr>
-            <tr>
-              <th>12</th>
-              <td>0.90</td>
-              <td>4.01</td>
-              <td>2.11</td>
-              <td>3.41</td>
-              <td>2.88</td>
-            </tr>
-            <tr>
-              <th>16</th>
-              <td>4.41</td>
-              <td>5.01</td>
-              <td>7.41</td>
-              <td>6.01</td>
-              <td>8.01</td>
-            </tr>
-            <tr>
-              <th>20</th>
-              <td>0.41</td>
-              <td>2.01</td>
-              <td>3.01</td>
-              <td>1.41</td>
-              <td>1.01</td>
-            </tr>
-          </tbody>
-        </table>
-        <h2>Custom Configuration <small>Customize the hue, saturation, lightness, and more</small></h2>
-        <table id="custom">
-          <thead>
-            <tr>
-              <th>Hour</th>
-              <th class="harlequin" data-sort="high-to-low">Day 1</th>
-              <th class="harlequin" data-sort="high-to-low">Day 2</th>
-              <th class="color">Day 3</th>
-              <th class="harlequin">Day 4</th>
-              <th class="color">Day 5</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>0</th>
-              <td>1.01</td>
-              <td>2.01</td>
-              <td>3.41</td>
-              <td>4.01</td>
-              <td>5.01</td>
-            </tr>
-            <tr>
-              <th>4</th>
-              <td>3.012</td>
-              <td>2.11</td>
-              <td>3.11</td>
-              <td>5.01</td>
-              <td>0.23</td>
-            </tr>
-            <tr>
-              <th>8</th>
-              <td>1.41</td>
-              <td>3.01</td>
-              <td>1.01</td>
-              <td>8.9</td>
-              <td>2.38</td>
-            </tr>
-            <tr>
-              <th>12</th>
-              <td>0.90</td>
-              <td>4.01</td>
-              <td>2.11</td>
-              <td>3.41</td>
-              <td>2.88</td>
-            </tr>
-            <tr>
-              <th>16</th>
-              <td>4.41</td>
-              <td>5.01</td>
-              <td>7.41</td>
-              <td>6.01</td>
-              <td>8.01</td>
-            </tr>
-            <tr>
-              <th>20</th>
-              <td>0.41</td>
-              <td>2.01</td>
-              <td>3.01</td>
-              <td>1.41</td>
-              <td>1.01</td>
-            </tr>
-          </tbody>
-        </table>
-        <h2>Custom Colours <small>Pass an array of custom colours into rather than use HSL</small></h2>
-        <table id="colors">
-          <thead>
-            <tr>
-              <th>Hour</th>
-              <th class="color">Day 1</th>
-              <th class="color">Day 2</th>
-              <th class="color">Day 3</th>
-              <th class="color">Day 4</th>
-              <th class="color">Day 5</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>0</th>
-              <td>1.01</td>
-              <td>2.01</td>
-              <td>3.41</td>
-              <td>4.01</td>
-              <td>5.01</td>
-            </tr>
-            <tr>
-              <th>4</th>
-              <td>3.012</td>
-              <td>2.11</td>
-              <td>3.11</td>
-              <td>5.01</td>
-              <td>0.23</td>
-            </tr>
-            <tr>
-              <th>8</th>
-              <td>1.41</td>
-              <td>3.01</td>
-              <td>1.01</td>
-              <td>8.9</td>
-              <td>2.38</td>
-            </tr>
-            <tr>
-              <th>12</th>
-              <td>0.90</td>
-              <td>4.01</td>
-              <td>2.11</td>
-              <td>3.41</td>
-              <td>2.88</td>
-            </tr>
-            <tr>
-              <th>16</th>
-              <td>4.41</td>
-              <td>5.01</td>
-              <td>7.41</td>
-              <td>6.01</td>
-              <td>8.01</td>
-            </tr>
-            <tr>
-              <th>20</th>
-              <td>0.41</td>
-              <td>2.01</td>
-              <td>3.01</td>
-              <td>1.41</td>
-              <td>1.01</td>
-            </tr>
-          </tbody>
-        </table>
-        <h2>Colspan Handling<small>With 'row' and 'both' the <code>colspan</code> attribute is irrelevant, but this can also work with 'column' mode</small></h2>
-        <table id="colspan">
-          <thead>
-            <tr>
-              <th>Hour</th>
-              <th class="color" colspan="2">Day 1</th>
-              <th colspan="2">Day 2</th>
-              <th class="color" colspan="3">Day 3</th>
-            </tr>
-            <tr>
-              <th>Division</th>
-              <th>1:A</th>
-              <th>1:B</th>
-              <th>2:A</th>
-              <th>2:B</th>
-              <th>3:A</th>
-              <th>3:B</th>
-              <th>3:C</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>0</th>
-              <td>1.01</td>
-              <td>7.41</td>
-              <td>2.01</td>
-              <td>3.41</td>
-              <td>4.01</td>
-              <td>5.01</td>
-              <td>9.01</td>
-            </tr>
-            <tr>
-              <th>4</th>
-              <td>3.012</td>
-              <td>2.11</td>
-              <td>3.11</td>
-              <td>5.01</td>
-              <td>0.23</td>
-              <td>4.01</td>
-              <td>2.11</td>
-            </tr>
-            <tr>
-              <th>8</th>
-              <td>1.41</td>
-              <td>3.01</td>
-              <td>1.01</td>
-              <td>8.9</td>
-              <td>2.38</td>
-              <td>4.01</td>
-              <td>2.11</td>
-            </tr>
-            <tr>
-              <th>12</th>
-              <td>0.90</td>
-              <td>4.01</td>
-              <td>2.11</td>
-              <td>3.41</td>
-              <td>2.88</td>
-              <td>7.41</td>
-              <td>6.01</td>
-            </tr>
-            <tr>
-              <th>16</th>
-              <td>4.41</td>
-              <td>5.01</td>
-              <td>7.41</td>
-              <td>6.01</td>
-              <td>8.01</td>
-              <td>4.01</td>
-              <td>5.01</td>
-            </tr>
-            <tr>
-              <th>20</th>
-              <td>0.41</td>
-              <td>2.01</td>
-              <td>3.01</td>
-              <td>1.41</td>
-              <td>1.01</td>
-              <td>4.01</td>
-              <td>5.01</td>
-            </tr>
-          </tbody>
-        </table>
-        <!--
-        <h2>Bar Colouring<small>Using <code>Harlequin.bar</code> instead of <code>.stripe</code> to add a size dimension</small></h2>
-        <table id="bar">
-          <thead>
-            <tr>
-              <th>Hour</th>
-              <th>Day 1</th>
-              <th>Day 2</th>
-              <th>Day 3</th>
-              <th>Day 4</th>
-              <th>Day 5</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="color">
-              <th>0</th>
-              <td>1.01</td>
-              <td>2.01</td>
-              <td>3.41</td>
-              <td>4.01</td>
-              <td>5.01</td>
-            </tr>
-            <tr class="color">
-              <th>4</th>
-              <td>3.012</td>
-              <td>2.11</td>
-              <td>3.11</td>
-              <td>5.01</td>
-              <td>0.23</td>
-            </tr>
-            <tr class="color">
-              <th>8</th>
-              <td>1.41</td>
-              <td>3.01</td>
-              <td>1.01</td>
-              <td>8.9</td>
-              <td>2.38</td>
-            </tr>
-            <tr class="color">
-              <th>12</th>
-              <td>0.90</td>
-              <td>4.01</td>
-              <td>2.11</td>
-              <td>3.41</td>
-              <td>2.88</td>
-            </tr>
-            <tr class="color">
-              <th>16</th>
-              <td>4.41</td>
-              <td>5.01</td>
-              <td>7.41</td>
-              <td>6.01</td>
-              <td>8.01</td>
-            </tr>
-            <tr class="color">
-              <th>20</th>
-              <td>0.41</td>
-              <td>2.01</td>
-              <td>3.01</td>
-              <td>1.41</td>
-              <td>1.01</td>
-            </tr>
-          </tbody>
-        </table>-->
-      </article>
-      <footer>
-        
-      </footer>
-  </body>
-</html>
+      <div class="container">
+        <header>
+          <p class="right">
+                      <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="forwardtek">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+                      |
+                      A <a href="http://forwardtechnology.co.uk" title="">Forward Technology</a> Project
+                    </p>
+          <h1>Harlequin.js</h1>
+          <div id="info">
+            <p>
+              Harlequin.js is a javascript utility for applying colour highlighting to data tables, useful for showing
+              the distribution of data. Simply include the library in your page and you're off.
+            </p>
+            <p><a href="http://github.com/redroot/harlequin"><strong>View the README</strong></a> or the <a href="example.js">example usage</a> to find out how to start colouring!</p>
+          </div>
+        </header>
+        <article>
+            <section>
+              <strong class="code">Toggle Code</strong>
+              <h2>Simple columns Example<small>Colouring the data by column</small></h2>
+              <pre>
+                <code>
+  Harlequin.stripe("columns","column");
+                </code>
+              </pre>
+              <table id="columns">
+                <thead>
+                  <tr>
+                    <th>Hour</th>
+                    <th class="color">Day 1</th>
+                    <th class="color">Day 2</th>
+                    <th class="color">Day 3</th>
+                    <th class="color">Day 4</th>
+                    <th class="color">Day 5</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>0</th>
+                    <td>1.01</td>
+                    <td>2.01</td>
+                    <td>3.41</td>
+                    <td>4.01</td>
+                    <td>5.01</td>
+                  </tr>
+                  <tr>
+                    <th>4</th>
+                    <td>3.012</td>
+                    <td>2.11</td>
+                    <td>3.11</td>
+                    <td>5.01</td>
+                    <td>0.23</td>
+                  </tr>
+                  <tr>
+                    <th>8</th>
+                    <td>1.41</td>
+                    <td>3.01</td>
+                    <td>1.01</td>
+                    <td>8.9</td>
+                    <td>2.38</td>
+                  </tr>
+                  <tr>
+                    <th>12</th>
+                    <td>0.90</td>
+                    <td>4.01</td>
+                    <td>2.11</td>
+                    <td>3.41</td>
+                    <td>2.88</td>
+                  </tr>
+                  <tr>
+                    <th>16</th>
+                    <td>4.41</td>
+                    <td>5.01</td>
+                    <td>7.41</td>
+                    <td>6.01</td>
+                    <td>8.01</td>
+                  </tr>
+                  <tr>
+                    <th>20</th>
+                    <td>0.41</td>
+                    <td>2.01</td>
+                    <td>3.01</td>
+                    <td>1.41</td>
+                    <td>1.01</td>
+                  </tr>
+                </tbody>
+              </table>
+          </section>
+          <section>
+          <strong class="code">Toggle Code</strong>
+          <h2>Simple Rows Example<small>Colouring the data by row</small></h2>
+          <pre>
+            <code>
+  Harlequin.stripe("rows","row");          
+            </code>
+          </pre>
+          <table id="rows">
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th>Day 1</th>
+                <th>Day 2</th>
+                <th>Day 3</th>
+                <th>Day 4</th>
+                <th>Day 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="color">
+                <th>0</th>
+                <td>1.01</td>
+                <td>2.01</td>
+                <td>3.41</td>
+                <td>4.01</td>
+                <td>5.01</td>
+              </tr>
+              <tr class="color">
+                <th>4</th>
+                <td>3.012</td>
+                <td>2.11</td>
+                <td>3.11</td>
+                <td>5.01</td>
+                <td>0.23</td>
+              </tr>
+              <tr class="color">
+                <th>8</th>
+                <td>1.41</td>
+                <td>3.01</td>
+                <td>1.01</td>
+                <td>8.9</td>
+                <td>2.38</td>
+              </tr>
+              <tr class="color">
+                <th>12</th>
+                <td>0.90</td>
+                <td>4.01</td>
+                <td>2.11</td>
+                <td>3.41</td>
+                <td>2.88</td>
+              </tr>
+              <tr class="color">
+                <th>16</th>
+                <td>4.41</td>
+                <td>5.01</td>
+                <td>7.41</td>
+                <td>6.01</td>
+                <td>8.01</td>
+              </tr>
+              <tr class="color">
+                <th>20</th>
+                <td>0.41</td>
+                <td>2.01</td>
+                <td>3.01</td>
+                <td>1.41</td>
+                <td>1.01</td>
+              </tr>
+            </tbody>
+          </table>
+          </section>
+          <section>
+            <strong class="code">Toggle Code</strong>
+          <h2>Rows and Columns <small>Colouring by all cells within the table body</small></h2>
+          <pre>
+            <code>
+  Harlequin.stripe("both","both"); 
+            </code>
+          </pre>
+          <table id="both">
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th>Day 1</th>
+                <th>Day 2</th>
+                <th>Day 3</th>
+                <th>Day 4</th>
+                <th>Day 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>0</th>
+                <td>1.01</td>
+                <td>2.01</td>
+                <td>3.41</td>
+                <td>4.01</td>
+                <td>5.01</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>3.012</td>
+                <td>2.11</td>
+                <td>3.11</td>
+                <td>5.01</td>
+                <td>0.23</td>
+              </tr>
+              <tr>
+                <th>8</th>
+                <td>1.41</td>
+                <td>3.01</td>
+                <td>1.01</td>
+                <td>8.9</td>
+                <td>2.38</td>
+              </tr>
+              <tr>
+                <th>12</th>
+                <td>0.90</td>
+                <td>4.01</td>
+                <td>2.11</td>
+                <td>3.41</td>
+                <td>2.88</td>
+              </tr>
+              <tr>
+                <th>16</th>
+                <td>4.41</td>
+                <td>5.01</td>
+                <td>7.41</td>
+                <td>6.01</td>
+                <td>8.01</td>
+              </tr>
+              <tr>
+                <th>20</th>
+                <td>0.41</td>
+                <td>2.01</td>
+                <td>3.01</td>
+                <td>1.41</td>
+                <td>1.01</td>
+              </tr>
+            </tbody>
+          </table>
+          </section>
+          <section>
+            <strong class="code">Toggle Code</strong>
+          <h2>Reverse Colouring <small>Setting <code>data-sort</code> to 'high-to-low' red-to-green</small></h2>
+          <pre>
+            <code>
+  Harlequin.stripe("reverse","both");
+            </code>
+          </pre>
+          <table id="reverse" data-sort="high-to-low">
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th>Day 1</th>
+                <th>Day 2</th>
+                <th>Day 3</th>
+                <th>Day 4</th>
+                <th>Day 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>0</th>
+                <td>1.01</td>
+                <td>2.01</td>
+                <td>3.41</td>
+                <td>4.01</td>
+                <td>5.01</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>3.012</td>
+                <td>2.11</td>
+                <td>3.11</td>
+                <td>5.01</td>
+                <td>0.23</td>
+              </tr>
+              <tr>
+                <th>8</th>
+                <td>1.41</td>
+                <td>3.01</td>
+                <td>1.01</td>
+                <td>8.9</td>
+                <td>2.38</td>
+              </tr>
+              <tr>
+                <th>12</th>
+                <td>0.90</td>
+                <td>4.01</td>
+                <td>2.11</td>
+                <td>3.41</td>
+                <td>2.88</td>
+              </tr>
+              <tr>
+                <th>16</th>
+                <td>4.41</td>
+                <td>5.01</td>
+                <td>7.41</td>
+                <td>6.01</td>
+                <td>8.01</td>
+              </tr>
+              <tr>
+                <th>20</th>
+                <td>0.41</td>
+                <td>2.01</td>
+                <td>3.01</td>
+                <td>1.41</td>
+                <td>1.01</td>
+              </tr>
+            </tbody>
+          </table>
+          </section>
+          <section>
+            <strong class="code">Toggle Code</strong>
+          <h2>Custom Configuration <small>Customize the hue, saturation, lightness, and more</small></h2>
+          <pre>
+            <code>
+  Harlequin.stripe("custom","column",{
+    color_class: "harlequin",
+    start_hue: 120,
+    end_hue: 240,
+    sat: 80,
+    lightness: 60
+  });
+            </code>
+          </pre>
+          <table id="custom">
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th class="harlequin" data-sort="high-to-low">Day 1</th>
+                <th class="harlequin" data-sort="high-to-low">Day 2</th>
+                <th class="color">Day 3</th>
+                <th class="harlequin">Day 4</th>
+                <th class="color">Day 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>0</th>
+                <td>1.01</td>
+                <td>2.01</td>
+                <td>3.41</td>
+                <td>4.01</td>
+                <td>5.01</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>3.012</td>
+                <td>2.11</td>
+                <td>3.11</td>
+                <td>5.01</td>
+                <td>0.23</td>
+              </tr>
+              <tr>
+                <th>8</th>
+                <td>1.41</td>
+                <td>3.01</td>
+                <td>1.01</td>
+                <td>8.9</td>
+                <td>2.38</td>
+              </tr>
+              <tr>
+                <th>12</th>
+                <td>0.90</td>
+                <td>4.01</td>
+                <td>2.11</td>
+                <td>3.41</td>
+                <td>2.88</td>
+              </tr>
+              <tr>
+                <th>16</th>
+                <td>4.41</td>
+                <td>5.01</td>
+                <td>7.41</td>
+                <td>6.01</td>
+                <td>8.01</td>
+              </tr>
+              <tr>
+                <th>20</th>
+                <td>0.41</td>
+                <td>2.01</td>
+                <td>3.01</td>
+                <td>1.41</td>
+                <td>1.01</td>
+              </tr>
+            </tbody>
+          </table>
+          </section>
+          <section>
+            <strong class="code">Toggle Code</strong>
+          <h2>Custom Colours <small>Pass an array of custom colours into rather than use HSL</small></h2>
+          <pre>
+            <code>
+  Harlequin.stripe("colors","column",{
+    colors:  [
+      "#f8696b",
+      "#f97c6f",
+      "#fa8f73",
+      "#fba176",
+      "#fcb47a",
+      "#fec67d",
+      "#ffd981",
+      "#ffeb84",
+      "#e8e482",
+      "#d2de81",
+      "#bcd780",
+      "#a5d17e",
+      "#8fca7d",
+      "#79c47c",
+      "#63be7b"
+    ]
+  });
+            </code>
+          </pre>
+          <table id="colors">
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th class="color">Day 1</th>
+                <th class="color">Day 2</th>
+                <th class="color">Day 3</th>
+                <th class="color">Day 4</th>
+                <th class="color">Day 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>0</th>
+                <td>1.01</td>
+                <td>2.01</td>
+                <td>3.41</td>
+                <td>4.01</td>
+                <td>5.01</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>3.012</td>
+                <td>2.11</td>
+                <td>3.11</td>
+                <td>5.01</td>
+                <td>0.23</td>
+              </tr>
+              <tr>
+                <th>8</th>
+                <td>1.41</td>
+                <td>3.01</td>
+                <td>1.01</td>
+                <td>8.9</td>
+                <td>2.38</td>
+              </tr>
+              <tr>
+                <th>12</th>
+                <td>0.90</td>
+                <td>4.01</td>
+                <td>2.11</td>
+                <td>3.41</td>
+                <td>2.88</td>
+              </tr>
+              <tr>
+                <th>16</th>
+                <td>4.41</td>
+                <td>5.01</td>
+                <td>7.41</td>
+                <td>6.01</td>
+                <td>8.01</td>
+              </tr>
+              <tr>
+                <th>20</th>
+                <td>0.41</td>
+                <td>2.01</td>
+                <td>3.01</td>
+                <td>1.41</td>
+                <td>1.01</td>
+              </tr>
+            </tbody>
+          </table>
+          </section>
+          <section>
+            <strong class="code">Toggle Code</strong>
+          <h2>Bar Colouring<small>Using <code>Harlequin.bar</code> instead of <code>.stripe</code> to add a size dimension</small></h2>
+          <pre>
+            <code>
+  // As well as stripe, there is a .bar method which is another painter
+
+  Harlequin.bar("bar","both");
+            </code>
+          </pre>
+          <table id="bar">
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th>Day 1</th>
+                <th>Day 2</th>
+                <th>Day 3</th>
+                <th>Day 4</th>
+                <th>Day 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="color">
+                <th>0</th>
+                <td>1.01</td>
+                <td>2.01</td>
+                <td>3.41</td>
+                <td>4.01</td>
+                <td>5.01</td>
+              </tr>
+              <tr class="color">
+                <th>4</th>
+                <td>3.012</td>
+                <td>2.11</td>
+                <td>3.11</td>
+                <td>5.01</td>
+                <td>0.23</td>
+              </tr>
+              <tr class="color">
+                <th>8</th>
+                <td>1.41</td>
+                <td>3.01</td>
+                <td>1.01</td>
+                <td>8.9</td>
+                <td>2.38</td>
+              </tr>
+              <tr class="color">
+                <th>12</th>
+                <td>0.90</td>
+                <td>4.01</td>
+                <td>2.11</td>
+                <td>3.41</td>
+                <td>2.88</td>
+              </tr>
+              <tr class="color">
+                <th>16</th>
+                <td>4.41</td>
+                <td>5.01</td>
+                <td>7.41</td>
+                <td>6.01</td>
+                <td>8.01</td>
+              </tr>
+              <tr class="color">
+                <th>20</th>
+                <td>0.41</td>
+                <td>2.01</td>
+                <td>3.01</td>
+                <td>1.41</td>
+                <td>1.01</td>
+              </tr>
+            </tbody>
+          </table>
+          </section>
+          <section>
+            <strong class="code">Toggle Code</strong>
+          <h2>Custom Painter<small>Using a custom painter to decorate the cells</small></h2>
+                  <pre>
+                    <code>
+  Harlequin.register("mypainter",function(cell,min,max,sort,color,options){
+
+    var size = Math.floor(((cell.value-min)/(max-min)) * 14) + 12;
+    var grey = 200 - Math.floor(((cell.value-min)/(max-min)) * 200);
+    cell.el.css("font-size",size+"px")
+           .css("color","rgb("+grey+","+grey+","+grey+")")
+           .css("border-bottom","1px solid "+color);
+
+  });
+
+  // .stripe("...") is actually an alias for .paint("stripe",...), so 
+  // you call custom painters methods on a table by passing the painter
+  // name prior to the rest of the options
+
+  Harlequin.paint("mypainter","custompainter","row");
+            </code>
+                  </pre>
+          <table id="custompainter">
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th>Day 1</th>
+                <th>Day 2</th>
+                <th>Day 3</th>
+                <th>Day 4</th>
+                <th>Day 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="color">
+                <th>0</th>
+                <td>1.01</td>
+                <td>2.01</td>
+                <td>3.41</td>
+                <td>4.01</td>
+                <td>5.01</td>
+              </tr>
+              <tr class="color">
+                <th>4</th>
+                <td>3.012</td>
+                <td>2.11</td>
+                <td>3.11</td>
+                <td>5.01</td>
+                <td>0.23</td>
+              </tr>
+              <tr class="color">
+                <th>8</th>
+                <td>1.41</td>
+                <td>3.01</td>
+                <td>1.01</td>
+                <td>8.9</td>
+                <td>2.38</td>
+              </tr>
+              <tr class="color">
+                <th>12</th>
+                <td>0.90</td>
+                <td>4.01</td>
+                <td>2.11</td>
+                <td>3.41</td>
+                <td>2.88</td>
+              </tr>
+              <tr class="color">
+                <th>16</th>
+                <td>4.41</td>
+                <td>5.01</td>
+                <td>7.41</td>
+                <td>6.01</td>
+                <td>8.01</td>
+              </tr>
+              <tr class="color">
+                <th>20</th>
+                <td>0.41</td>
+                <td>2.01</td>
+                <td>3.01</td>
+                <td>1.41</td>
+                <td>1.01</td>
+              </tr>
+            </tbody>
+          </table>
+          </section>
+          <section>
+            <strong class="code">Toggle Code</strong>
+          <h2>Multiple Painters<small>Specifier multiple painters to decorate the cells</small></h2>
+          <pre>
+            <code>
+  // you can pass multiple painters to the paint method and they will be called
+  // in the order supplied
+
+  Harlequin.paint(["stripe","mypainter"],"multiplepainters","row");
+            </code>
+          </pre>
+          <table id="multiplepainters">
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th>Day 1</th>
+                <th>Day 2</th>
+                <th>Day 3</th>
+                <th>Day 4</th>
+                <th>Day 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="color">
+                <th>0</th>
+                <td>1.01</td>
+                <td>2.01</td>
+                <td>3.41</td>
+                <td>4.01</td>
+                <td>5.01</td>
+              </tr>
+              <tr class="color">
+                <th>4</th>
+                <td>3.012</td>
+                <td>2.11</td>
+                <td>3.11</td>
+                <td>5.01</td>
+                <td>0.23</td>
+              </tr>
+              <tr class="color">
+                <th>8</th>
+                <td>1.41</td>
+                <td>3.01</td>
+                <td>1.01</td>
+                <td>8.9</td>
+                <td>2.38</td>
+              </tr>
+              <tr class="color">
+                <th>12</th>
+                <td>0.90</td>
+                <td>4.01</td>
+                <td>2.11</td>
+                <td>3.41</td>
+                <td>2.88</td>
+              </tr>
+              <tr class="color">
+                <th>16</th>
+                <td>4.41</td>
+                <td>5.01</td>
+                <td>7.41</td>
+                <td>6.01</td>
+                <td>8.01</td>
+              </tr>
+              <tr class="color">
+                <th>20</th>
+                <td>0.41</td>
+                <td>2.01</td>
+                <td>3.01</td>
+                <td>1.41</td>
+                <td>1.01</td>
+              </tr>
+            </tbody>
+          </table>
+          </section>
+          <section>
+          <h2>Colspan Handling<small>With 'row' and 'both' the <code>colspan</code> attribute is irrelevant, but this still works with 'column' mode as expected</small></h2>
+
+          <table id="colspan">
+            <thead>
+              <tr>
+                <th>Hour</th>
+                <th class="color" colspan="2">Day 1</th>
+                <th colspan="2">Day 2</th>
+                <th class="color" colspan="3">Day 3</th>
+              </tr>
+              <tr>
+                <th>Division</th>
+                <th>1:A</th>
+                <th>1:B</th>
+                <th>2:A</th>
+                <th>2:B</th>
+                <th>3:A</th>
+                <th>3:B</th>
+                <th>3:C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>0</th>
+                <td>1.01</td>
+                <td>7.41</td>
+                <td>2.01</td>
+                <td>3.41</td>
+                <td>4.01</td>
+                <td>5.01</td>
+                <td>9.01</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>3.012</td>
+                <td>2.11</td>
+                <td>3.11</td>
+                <td>5.01</td>
+                <td>0.23</td>
+                <td>4.01</td>
+                <td>2.11</td>
+              </tr>
+              <tr>
+                <th>8</th>
+                <td>1.41</td>
+                <td>3.01</td>
+                <td>1.01</td>
+                <td>8.9</td>
+                <td>2.38</td>
+                <td>4.01</td>
+                <td>2.11</td>
+              </tr>
+              <tr>
+                <th>12</th>
+                <td>0.90</td>
+                <td>4.01</td>
+                <td>2.11</td>
+                <td>3.41</td>
+                <td>2.88</td>
+                <td>7.41</td>
+                <td>6.01</td>
+              </tr>
+              <tr>
+                <th>16</th>
+                <td>4.41</td>
+                <td>5.01</td>
+                <td>7.41</td>
+                <td>6.01</td>
+                <td>8.01</td>
+                <td>4.01</td>
+                <td>5.01</td>
+              </tr>
+              <tr>
+                <th>20</th>
+                <td>0.41</td>
+                <td>2.01</td>
+                <td>3.01</td>
+                <td>1.41</td>
+                <td>1.01</td>
+                <td>4.01</td>
+                <td>5.01</td>
+              </tr>
+            </tbody>
+          </table>
+          </section>
+        </article>
+        <footer>
+
+        </footer>
+    </body>
+  </html>
