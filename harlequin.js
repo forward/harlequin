@@ -186,8 +186,6 @@ Harlequin = (function(){
         
         
         }
-        
-        
         return color;
     }  
     
@@ -264,24 +262,13 @@ Harlequin = (function(){
       bar.innerHTML = cell.orig;
       bar.style.background = color;
       bar.style.width = Math.floor(((cell.value-min)/(max-min)) * 100) + "%"
-      bar.style.display = "block";
-      bar.style.top = bar.style.bottom = bar.style.left =  0;
-      bar.style.position = "absolute";
-      bar.style.zIndex = 0;
-      bar.style.display = "block";
+      bar.style.display = "inline-block";
+      bar.style.height = cell.el.height();
       bar.style.textAlign = "center";
       
-
-      content.style.zIndex = 1;
-      content.style.display = "inline-block";
-      content.style.lineHeight = cell.el.height();
-      
-      
-      cell.el[0].style.position = "relative";
-      cell.el[0].style.display = "block;"
+      cell.el.textAlign = "left"
       cell.el[0].innerHTML = ""
       cell.el[0].appendChild(bar);
-      cell.el[0].appendChild(content);
       
     });
     
