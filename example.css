@@ -4,6 +4,7 @@ body {
   font-size: 12px;
   text-align: center;
   background: #f0f0f0;
+  margin: 0;
 }
 
 .container {
@@ -48,10 +49,15 @@ h1 {
   text-shadow: 1px 2px 2px #aaa;
 }
 
-h2 {
-  margin: 30px 0 20px;
+section {
+
   border-top: 1px solid #eee;
   padding-top: 20px;
+  margin-top: 20px;
+}
+
+h2 {
+  margin: 10px 0 20px;
   font-size: 2em;
 }
 
@@ -66,6 +72,67 @@ h2 small {
   line-height: 1.2em;
 }
 
+a {
+  
+}
+
 a, a:visited {
   color: #0069D6;
+}
+
+.code {
+  cursor: pointer;
+  float: right;
+  margin-top: 12px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.code:after {
+  content: "";
+  border: 5px solid #000;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  display: inline-block;
+  height: 0px;
+  width: 0px;
+  margin: 5px 0px 0px 5px;
+  float: right;
+}
+
+p.right {
+  float: right;
+  color: #999;
+  line-height: 30px;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+p.right a {
+  font-weight: bold;
+  color: #666;
+  text-decoration: none;
+}
+
+.code.showing:after{
+    border-bottom-color: #000;
+    border-top-color: transparent;
+    margin: 0px 0px 0px 5px;
+}
+
+.code:hover {
+  background: #eee;
+  border-color: #ccc;
+}
+
+pre {
+  background: #ffe;
+  padding: 10px 20px;
+  border: 1px solid #cca;
+  border-radius: 5px;
+  display: none;
+  font-size: 1.2em;
 }

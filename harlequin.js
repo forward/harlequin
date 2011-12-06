@@ -12,7 +12,7 @@ Harlequin = (function(){
    var table = null,
        segments = [],
        useHsl = true,
-       paint = "stripe",
+       painter = "stripe",
        painters = {};
   
    // config options
@@ -130,74 +130,29 @@ Harlequin = (function(){
           
           
           for(j = 0, jlen = cells.length; j < jlen; j++){
-              colorCell(cells[j],seg_min,seg_max,seg.sort);
+              paintCell(cells[j],seg_min,seg_max,seg.sort);
           }
       }
     }
     
-    colorCell = function(cell,min,max,sort){
-      if(paint == "stripe"){
-        
-        cell.el.css("background-color",getColor(cell.value,min,max,sort));
+    paintCell = function(cell,min,max,sort){
+      color = getColor(cell.value,min,max,sort);
       
-      }else if(paint == "bar"){
-        
-        var bar = document.createElement("span"),
-            content = document.createElement("span");
-        
-        bar.innerHTML = cell.orig;
-        bar.style.background = getColor(cell.value,min,max,sort);
-        bar.style.width = Math.floor(((cell.value-min)/(max-min)) * 100) + "%"
-        bar.style.display = "block";
-        bar.style.top = bar.style.bottom = bar.style.left =  0;
-        bar.style.position = "absolute";
-        bar.style.zIndex = 0;
-        bar.style.display = "inline-block";
-        bar.style.textAlign = "center";
-        
-
-        content.style.zIndex = 1;
-        content.style.display = "inline-block";
-        content.style.lineHeight = cell.el.height();
-        
-        
-        cell.el[0].style.position = "relative";
-        cell.el[0].innerHTML = ""
-        cell.el[0].appendChild(bar);
-        cell.el[0].appendChild(content);
-        
-      }else if(paint == "dot"){
-        
-        var dot = document.createElement("span"),
-            content = document.createElement("span");
-        
-        max_radius = Math.floor(cell.el.height() * 4),
-        radius = Math.floor(((cell.value-min)/(max-min)) * max_radius) + 3;
-        
-            
-        dot.innerHTML = cell.orig;
-        dot.style.background = getColor(cell.value,min,max,sort);
-        dot.style.display = "inline-block";
-        dot.style.textAlign = "center";
-        dot.style.width = dot.style.height = (radius) + "px";
-        dot.style.borderRadius = dot.style.MozBorderRadius = dot.style.WebkitBorderRadius = "999px";
-        dot.style.position = "absolute";
-        dot.style.zIndex = 0;
-        
-        // calcute absolute positioning based on size of height and radius
-        
-        content.style.zIndex = 1;
-        content.style.display = "inline-block";
-        content.style.lineHeight = cell.el.height();
-        
-
-        cell.el[0].style.position = "relative";
-        cell.el[0].innerHTML = ""
-        cell.el[0].appendChild(dot);
-        cell.el[0].appendChild(content);
+      if(typeof painter == "object"){
+        for(var i = 0, len = painter.length; i < len; i++){
+          painters[painter[i]](cell,min,max,sort,color,config);
+        }
+      }else{
+        painters[painter](cell,min,max,sort,color,config);
       }
     }
     
+    // register function
+    
+    registerPainter = function(name,fn){
+      if(typeof fn != "function") return;
+      painters[name] = fn;
+    }
     
     // color functions
         
@@ -242,9 +197,6 @@ Harlequin = (function(){
       return !!~('' + el.style.backgroundColor).indexOf("rgba") || !!~('' + el.style.backgroundColor).indexOf("hsla");
     }
     
-    useHsl = testHsl();
-
-    
     hsl2hex = function(h,s,l){
         h = (h % 360) / 360;
         s = s/100;
@@ -270,13 +222,18 @@ Harlequin = (function(){
     }
     
     
-    // init function   
+    // init functions
     
-    start = function(table_id,direction,options,npaint){
+    reset = function(){
+      segments = [];
+      config = {};
+    }  
+    
+    paint = function(npaint,table_id,direction,options){
+        reset();
+        
         table = $("#"+table_id);
-        segments = [];
-        config = {}
-        paint = npaint || "stripe"
+        painter = npaint || "stripe"
         
         if(options != undefined){
           for(k in defaults){
@@ -290,18 +247,90 @@ Harlequin = (function(){
         paintCells(direction);
     }
     
+    
+    // boostrap a bit and then lets register some painter objects
+    
+    useHsl = testHsl();
+    
+    registerPainter("stripe",function(cell,min,max,sort,color){
+      cell.el.css("background-color",color);
+    });
+    
+    registerPainter("bar",function(cell,min,max,sort){
+      
+      var bar = document.createElement("span"),
+          content = document.createElement("span");
+      
+      bar.innerHTML = cell.orig;
+      bar.style.background = color;
+      bar.style.width = Math.floor(((cell.value-min)/(max-min)) * 100) + "%"
+      bar.style.display = "block";
+      bar.style.top = bar.style.bottom = bar.style.left =  0;
+      bar.style.position = "absolute";
+      bar.style.zIndex = 0;
+      bar.style.display = "block";
+      bar.style.textAlign = "center";
+      
+
+      content.style.zIndex = 1;
+      content.style.display = "inline-block";
+      content.style.lineHeight = cell.el.height();
+      
+      
+      cell.el[0].style.position = "relative";
+      cell.el[0].style.display = "block;"
+      cell.el[0].innerHTML = ""
+      cell.el[0].appendChild(bar);
+      cell.el[0].appendChild(content);
+      
+    });
+    
+    registerPainter("dot",function(cell,min,max,sort){
+      
+      var dot = document.createElement("span"),
+          content = document.createElement("span");
+      
+      max_radius = Math.floor(cell.el.height() * 4),
+      radius = Math.floor(((cell.value-min)/(max-min)) * max_radius) + 3;
+      
+          
+      dot.innerHTML = cell.orig;
+      dot.style.background = color;
+      dot.style.display = "inline-block";
+      dot.style.textAlign = "center";
+      dot.style.width = dot.style.height = (radius) + "px";
+      dot.style.borderRadius = dot.style.MozBorderRadius = dot.style.WebkitBorderRadius = "999px";
+      dot.style.position = "absolute";
+      dot.style.zIndex = 0;
+      
+      // calcute absolute positioning based on size of height and radius
+      
+      content.style.zIndex = 1;
+      content.style.display = "inline-block";
+      content.style.lineHeight = cell.el.height();
+      
+
+      cell.el[0].style.position = "relative";
+      cell.el[0].innerHTML = ""
+      cell.el[0].appendChild(dot);
+      cell.el[0].appendChild(content);
+    });
+    
+    // return object
+    
     return {
-        stripe: function(table_id,direction,options,paint){
-            start(table_id,direction,options,"stripe");
+      
+        paint: paint,
+        register: registerPainter,
+      
+        stripe: function(table_id,direction,options){
+            paint("stripe",table_id,direction,options);
         },
         
-        bar: function(table_id,direction,options,paint){
-            start(table_id,direction,options,"bar");
-        },
-        
-        dot: function(table_id,direction,options,paint){
-            start(table_id,direction,options,"dot");
+        bar: function(table_id,direction,options){
+            paint("bar",table_id,direction,options);
         }
+
     }
     
 })();
