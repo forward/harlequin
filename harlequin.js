@@ -107,7 +107,7 @@ Harlequin = (function(){
             var element = $(this);
             var new_cell = {
                 orig: element.text(),
-                value: parseFloat(element.text().replace(",","")),
+                value: parseFloat(element.text().replace(/,/g,"")),
                 el: element    
             }
                 
