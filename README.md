@@ -4,13 +4,13 @@
 
 Harlequin is a utility for applying color highlighting to HTML data tables, useful for showing the distribution of data. You can do this by column, by row, or across the whole table. Examples are available on the index.html page. You can also specify your own custom painting methods.
 
-Version: 0.4
+Version: 0.5
 
 Tested in FF, Chrome and Safari and IE7+
 
 ## Prerequisites
 
-* jQuery 1.3+ (This is only temporary, I will be decoupling this soon)
+* jQuery 1.3+ or Zepto 0.6+
 * Appropriate markup. Column headers must be `th` elements in a `thead`, the data to stripe must in `td` elements inside a `tbody`. 
 
 ## Basic Usage
@@ -132,13 +132,10 @@ You can also apply multiple painters to each cell, by passing an array of painte
 
     Harlequin.paint(["stripe","mypainter"],"atableid","row");
 
-## To-Do
-
-* Decouple jQuery
-* Build a less strict mode, without the need for thead and tbody (more prone to weird results mayhaps :/)
 
 ## Changelog
 
+* __0.5__: Now support by Zepto as well as jQuery
 * __0.4__: Added ability to add custom painters
 * __0.3__: Colspans now work with columns mode
 * __0.2__: Added fallback to set hex value is HSL is not supported

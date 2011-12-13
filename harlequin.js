@@ -4,7 +4,7 @@
  *
  *    @author       Forward (http://forwardtechnology.co.uk)
  *    @contributors Luke Williams (http://www.red-root.com)
- *    @version      0.4
+ *    @version      0.5
 */
 
 Harlequin = (function(){
@@ -26,13 +26,16 @@ Harlequin = (function(){
         lightness: 70,
         colors: null,
       }
-      
-    // fix for webkit bug on nth-child and descendents
-    // until we don't need jQuery anymore or a find a better fix
-    $.expr[":"].harlequin = function() {
-        return true;
-    };
 
+    if(typeof jQuery != "undefined"){
+        
+      // fix for webkit bug on nth-child and descendents
+      // to force jQuery to use Sizzle rather than the engine
+      $.expr[":"].harlequin = function() {
+              return true;
+          };
+    }
+    
     
     // lets find some cells
     
@@ -92,14 +95,14 @@ Harlequin = (function(){
               seg_min = null,
               cells = [];
               
-          var query = (direction == "column") ? "tbody tr td:nth-child("+(seg_index+1)+")" : 
-                      (direction == "row") ? "tbody tr:nth-child("+(seg_index+1)+") td:harlequin" :
-                      (direction == "both") ? "tbody td" : false;
+          var elements = (direction == "column") ? $("tbody tr td:nth-child("+(seg_index+1)+")",table) : 
+                         (direction == "row") ? $("tbody tr:nth-child("+(seg_index+1)+")",table).find("td") :
+                         (direction == "both") ? $("tbody td",table) : false;
           
-          if(query == false) return;
+          if(elements == false) return;
         
           
-          $(query,table).each(function(){
+          elements.each(function(){
             
             var element = $(this);
             var new_cell = {
@@ -130,7 +133,7 @@ Harlequin = (function(){
           
           
           for(j = 0, jlen = cells.length; j < jlen; j++){
-              paintCell(cells[j],seg_min,seg_max,seg.sort);
+            paintCell(cells[j],seg_min,seg_max,seg.sort);
           }
       }
     }
@@ -263,7 +266,6 @@ Harlequin = (function(){
       bar.style.background = color;
       bar.style.width = Math.floor(((cell.value-min)/(max-min)) * 100) + "%"
       bar.style.display = "inline-block";
-      bar.style.height = cell.el.height();
       bar.style.textAlign = "center";
       
       cell.el.textAlign = "left"
