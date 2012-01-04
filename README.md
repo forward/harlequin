@@ -1,4 +1,4 @@
-# Harlequin.js (beta) 
+# Harlequin.js (beta)
 
 [-> Demo here](http://forward.github.com/harlequin/)
 
@@ -11,20 +11,20 @@ Tested in FF, Chrome and Safari and IE7+
 ## Prerequisites
 
 * jQuery 1.3+ or Zepto 0.6+
-* Appropriate markup. Column headers must be `th` elements in a `thead`, the data to stripe must in `td` elements inside a `tbody`. 
+* Appropriate markup. Column headers must be `th` elements in a `thead`, the data to stripe must in `td` elements inside a `tbody`.
 
 ## Basic Usage
 
 The basic usage for Harlequin is:
 
     Harlequin.stripe("table_id","direction")
-    
+
 The first parameter being the id of the table you wish to stripe, the second being the direction you wish to stripe:
 
 * __column__: This will colour cells according to the data in each column.
 * __row__: This will colour cells according to the data in each row.
 * __both__: This will colour cells according to the data across the table
-  
+
 Harlequin will only stripe segments with the configurable class `color` on a specific element depending on the direction.
 
 For __column__, this class must be applied to the `th` element at the top of each column:
@@ -37,7 +37,7 @@ For __column__, this class must be applied to the `th` element at the top of eac
             ...
           </tr>
         </thead>
-        
+
 For __row__, this class must be on the `tr` element:
 
         <tbody>
@@ -72,7 +72,7 @@ An options object can can be passed as a third parameter to the a paint function
           lightness: 70, // the lightness of the colour, 0-100, defaults to 70
           colors: null // an array of hex colours, start to end, to colour by, defaults to null
         })
-        
+
 Most of these are straightforward, but here is an example of specifying an array of colours, in order, start to end:
 
         Harlequin.stripe("colors","column",{
@@ -94,7 +94,7 @@ Most of these are straightforward, but here is an example of specifying an array
             "#63be7b"
           ]
         });
-        
+
 Keep in mind by setting an arrow of colours you will be ignoring all the HSL configuration and the sort-order will not apply. To reverse the colours, simply reverse the elements in the array.
 
 ## Painting Modes
@@ -107,12 +107,12 @@ Harlequin comes with two painting modes, ``Harlequin.stripe`` and ``Harlequin.ba
       cell.el.css("font-size",size+"px")
              .css("color","rgb("+grey+","+grey+","+grey+")")
              .css("border-bottom","1px solid "+color);
-  
+
     });
 
 The parameters for an custom painter function are:
 
-* __cell__ : an object with 
+* __cell__ : an object with
   * __el__ : this table cell, as a jQuery object,
   * __orig__ : original text value of the cell,
   * __value__: parsed value of the cell,
@@ -125,7 +125,7 @@ The parameters for an custom painter function are:
 To paint with a custom painter, you can use ``Harlequin.paint``, passing the name of you painter as the first parameter, followed the by the other parameters you would pass to ``.stripe`` or ``.bar``:
 
     Harlequin.paint("mypainter","atableid","row",options_object);
-    
+
 In essence, the ``.stripe`` method is just a call to the above method with the "stripe" painter name as the first parameter.
 
 You can also apply multiple painters to each cell, by passing an array of painter names to the ``.paint`` method:
@@ -142,7 +142,7 @@ You can also apply multiple painters to each cell, by passing an array of painte
 
 ## License
 
-Copyright (c) 2011- Forward
+Copyright (c) 2012 Forward
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
