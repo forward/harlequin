@@ -64,7 +64,7 @@ Harlequin will colour between two hues, which are set to red (0 as the start hue
 
 An options object can can be passed as a third parameter to the a paint function call, allowing you to configure the display further.
 
-        Harlequin.stripe("mytable","column"{
+        Harlequin.stripe("mytable","column", {
           color_class: "color" // the class Harlequin will look for when colouring, default 'color'
           start_hue: 0, // the start hue, 0-360, defaults to 0 (red)
           end_hue: 120, // the end hue, 0-360, defaults to 120 (green)
