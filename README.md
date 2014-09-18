@@ -4,7 +4,7 @@
 
 Harlequin is a utility for applying color highlighting to HTML data tables, useful for showing the distribution of data. You can do this by column, by row, or across the whole table. Examples are available on the index.html page. You can also specify your own custom painting methods.
 
-Version: 0.5
+Version: 0.6
 
 Tested in FF, Chrome and Safari and IE7+
 
@@ -135,6 +135,7 @@ You can also apply multiple painters to each cell, by passing an array of painte
 
 ## Changelog
 
+* __0.6__: Now supports striping of currencies and perctange values
 * __0.5__: Now support by Zepto as well as jQuery
 * __0.4__: Added ability to add custom painters
 * __0.3__: Colspans now work with columns mode
