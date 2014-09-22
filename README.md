@@ -1,4 +1,4 @@
-# Harlequin.js (beta)
+# Harlequin.js
 
 [-> Demo here](http://forward.github.com/harlequin/)
 
