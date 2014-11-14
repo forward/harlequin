@@ -4,7 +4,7 @@
  *
  *    @author       Forward (http://forwardtechnology.co.uk)
  *    @contributors Luke Williams (http://www.red-root.com)
- *    @version      0.6
+ *    @version      0.6.2
 */
 
 Harlequin = (function(){
@@ -115,16 +115,18 @@ Harlequin = (function(){
                 return true;
             }
 
-            if(seg_min == null){
-               seg_min = new_cell.value
-            }else if(new_cell.value < seg_min){
-               seg_min = new_cell.value
-            }
+            if(!isNaN(new_cell.value)) {
+              if(seg_min == null){
+                 seg_min = new_cell.value
+              }else if(new_cell.value < seg_min){
+                 seg_min = new_cell.value
+              }
 
-            if(seg_max == null){
-               seg_max = new_cell.value
-            }else if(new_cell.value > seg_max){
-               seg_max = new_cell.value
+              if(seg_max == null){
+                 seg_max = new_cell.value
+              }else if(new_cell.value > seg_max){
+                 seg_max = new_cell.value
+              }
             }
 
 
